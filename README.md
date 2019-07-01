@@ -1,0 +1,2 @@
+# CSharp-Payroll
+The purpose of this project is to familiarize you with object oriented programming in C#, including the concepts of classes, properties, methods, encapsulation, containment, polymorphism, and inheritance.  You must create a simple employee payroll program capable of servicing 50 employees. The user must be able to enter information for new employees, update employee information, and pay all employees who are currently on the payroll.
