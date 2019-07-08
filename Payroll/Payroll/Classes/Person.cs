@@ -10,16 +10,22 @@ namespace Payroll.Classes
     {
         string firstName;
         string lastName;
-        int phoneNumber;
+        long phoneNumber;
+        public string FirstName { get => firstName; set => firstName = value; }
+        public string LastName { get => lastName; set => lastName = value; }
+        public long PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
 
         Address address;
 
         public Person()
         {
-
+            firstName = "first name";
+            lastName = "last name";
+            phoneNumber = 0;
+            address = new Address("Adress",0,"city","state",0);
         }
 
-        public Person(string firstName, string lastName, int phoneNumber, Address address)
+        public Person(string firstName, string lastName, long phoneNumber, Address address)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -27,9 +33,13 @@ namespace Payroll.Classes
             this.address = address;
         }
 
+    
+
         public override string ToString()
         {
-            return base.ToString();
+            string data = firstName + " " + lastName + ", Phone Number: " + phoneNumber +", Address: "+ address.ToString();
+            return data;
+                
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Payroll.Classes
 {
-    class Address
+    public class Address
     {
         string StreetAddress;
         int ApartmentNumber;
@@ -34,7 +34,7 @@ namespace Payroll.Classes
       
         public override string ToString()
         {
-            return StreetAddress + " " + ApartmentNumber + " " + City + " " + State + " " + Zip;
+            return StreetAddress + " Apartment " + ApartmentNumber + " " + City + " " + State + " " + Zip;
         }
     }
 }
