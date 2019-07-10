@@ -32,62 +32,25 @@ namespace Payroll
                     switch (input)
                     {
                         case 1:
-                            Console.WriteLine("Enter the name of the new employee");
-
+                            Employee newEmployee =  new Employee();
+                            EditData(ref newEmployee);
+                            employees.Add(newEmployee);
+                            break;
+                        case 2:
                             Console.WriteLine("Enter the first name of the employee");
                             string firstName = Console.ReadLine();
                             Console.WriteLine("Enter the Last name of the employee");
                             string lastName = Console.ReadLine();
 
-                            Console.WriteLine("Enter the Last name of the employee");
-                            long phoneNumber = 0 ;
-                            Int64.TryParse(Console.ReadLine(),out phoneNumber);
-
-                            Console.WriteLine("Enter the wage of the employee");
-                            float wage = 0;
-                            float.TryParse(Console.ReadLine(), out wage);
-
-                            Console.WriteLine("Enter the hours worked of the employee");
-                            float hoursWorked = 0;
-                            float.TryParse(Console.ReadLine(), out hoursWorked);
-
-                            Console.WriteLine("is the employee on the payroll (true/false)");
-                            bool onPayroll = false;
-                            bool.TryParse(Console.ReadLine(), out onPayroll);
-
-                           
-                            Console.WriteLine("Enter the address of the employee");
-                            string streetAdress = Console.ReadLine();
-
-                            Console.WriteLine("Enter the Apartment number of the employee");
-                            long temp = 0;
-                            Int64.TryParse(Console.ReadLine(), out phoneNumber);
-                            int appNum = (int)temp;
-
-                            Console.WriteLine("Enter the city of the employee");
-                            string city = Console.ReadLine();
-
-                            Console.WriteLine("Enter the state of the employee");
-                            string state = Console.ReadLine();
-
-                            Console.WriteLine("Enter the Zip Code of the employee");
-                            temp = 0;
-                            Int64.TryParse(Console.ReadLine(), out phoneNumber);
-                            int zip = (int)temp;
-                            Address address = new Address(streetAdress, appNum, city, state, zip);
-                            employees.Add(new Employee(firstName,lastName,phoneNumber,address,jobTitle,wage,hoursWorked,onPayroll));
-                            break;
-                        case 2:
-                            Console.WriteLine("Enter the first name of the employee");
-                            firstName = Console.ReadLine();
-                            Console.WriteLine("Enter the Last name of the employee");
-                            lastName = Console.ReadLine();
-
                             Employee employee = findEmployee(employees, firstName, lastName);
 
-
+                            if(employee != null)
+                            {
+                                EditData(ref employee);
+                            }
                             break;
                         case 3:
+                            Console.WriteLine("You Paid " + PayEmployees(employees)+" to "+ employees.Count + " employees");
 
                             break;
                         case 4:
@@ -127,6 +90,75 @@ namespace Payroll
 
                 Console.WriteLine("That Employee dosent exist");
                 return null;
+            }
+
+            float PayEmployees(List<Employee> list)
+            {
+                float TotalPaid = 0;
+                foreach (Employee employee in list)
+                {
+                    TotalPaid += employee.Pay();
+                }
+                return TotalPaid;
+            }
+
+            void EditData(ref Employee employee)
+            {
+                Console.WriteLine("Enter the first name of the employee");
+                string firstName = Console.ReadLine();
+                employee.FirstName = firstName;
+                Console.WriteLine("Enter the Last name of the employee");
+                string lastName = Console.ReadLine();
+                employee.LastName = lastName;
+
+                Console.WriteLine("Enter the phone number of the employee");
+                long phoneNumber = 0;
+                Int64.TryParse(Console.ReadLine(), out phoneNumber);
+                employee.PhoneNumber = phoneNumber;
+
+                Console.WriteLine("Enter the Job Title of the employee");
+                string jobTitle = Console.ReadLine();
+                employee.JobTitle = jobTitle;
+
+                Console.WriteLine("Enter the wage of the employee");
+                float wage = 0;
+                float.TryParse(Console.ReadLine(), out wage);
+                employee.Wage = wage;
+
+                Console.WriteLine("Enter the hours worked of the employee");
+                float hoursWorked = 0;
+                float.TryParse(Console.ReadLine(), out hoursWorked);
+                employee.HoursWorked = hoursWorked;
+
+                Console.WriteLine("is the employee on the payroll (true/false)");
+                bool onPayroll = false;
+                bool.TryParse(Console.ReadLine(), out onPayroll);
+                employee.OnPayroll = onPayroll;
+
+
+                Console.WriteLine("Enter the address of the employee");
+                string streetAdress = Console.ReadLine();
+
+
+                Console.WriteLine("Enter the Apartment number of the employee");
+                long temp = 0;
+                Int64.TryParse(Console.ReadLine(), out temp);
+                int appNum = (int)temp;
+
+                Console.WriteLine("Enter the city of the employee");
+                string city = Console.ReadLine();
+
+                Console.WriteLine("Enter the state of the employee");
+                string state = Console.ReadLine();
+
+                Console.WriteLine("Enter the Zip Code of the employee");
+                temp = 0;
+                Int64.TryParse(Console.ReadLine(), out temp);
+                int zip = (int)temp;
+                Address address = new Address(streetAdress, appNum, city, state, zip);
+
+                employee.Address = address;
+
             }
         }
 

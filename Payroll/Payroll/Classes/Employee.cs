@@ -13,6 +13,11 @@ namespace Payroll.Classes
         float hoursWorked;
         bool onPayroll;
 
+        public string JobTitle { get => jobTitle; set => jobTitle = value; }
+        public float Wage { get => wage; set => wage = value; }
+        public float HoursWorked { get => hoursWorked; set => hoursWorked = value; }
+        public bool OnPayroll { get => onPayroll; set => onPayroll = value; }
+
         public Employee() : base()
         {
             jobTitle = "jobTitile";
@@ -29,9 +34,10 @@ namespace Payroll.Classes
             this.onPayroll = onPayroll;
         }
 
+ 
         public float Pay()
         {
-            return 0;
+            return wage *hoursWorked;
         }
         public override string ToString()
         {

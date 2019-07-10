@@ -11,11 +11,13 @@ namespace Payroll.Classes
         string firstName;
         string lastName;
         long phoneNumber;
+        Address address;
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
         public long PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
+        public Address Address { get => address; set => address = value; }
 
-        Address address;
+       
 
         public Person()
         {
