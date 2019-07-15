@@ -25,6 +25,7 @@ namespace Payroll
                 Console.WriteLine("Enter 3 to Pay all Employees on the payroll");
                 Console.WriteLine("Enter 4 to Display all Employees");
                 Console.WriteLine("Enter 0 to Quit");
+
                 long longConversion ;
                 if(Int64.TryParse(Console.ReadLine(), out longConversion))
                 {
@@ -66,9 +67,12 @@ namespace Payroll
                 Console.ReadKey();
 
             } while (input != 0);
-           
-           
 
+
+            /// <summary>
+            /// Displays all of the employees and their data
+            /// </summary>
+            /// <returns></returns>
             void displayList(List<Employee> list)
             {
                 foreach (Employee employee in list)
@@ -77,7 +81,11 @@ namespace Payroll
                     Console.WriteLine();
                 }
             }
-
+            /// <summary>
+            ///Returns a employee with a given first and last name
+            /// </summary>
+            /// <returns></returns>
+            
             Employee findEmployee(List<Employee> list , string firstname, string lastname)
             {
                 foreach (Employee employee in list)
@@ -91,6 +99,10 @@ namespace Payroll
                 Console.WriteLine("That Employee dosent exist");
                 return null;
             }
+            /// <summary>
+            ///pays alls the employees on the payroll
+            /// </summary>
+            /// <returns></returns>
 
             float PayEmployees(List<Employee> list)
             {
@@ -102,6 +114,10 @@ namespace Payroll
                 return TotalPaid;
             }
 
+            /// <summary>
+            /// edit all the data of a given employee
+            /// </summary>
+            /// <returns></returns>
             void EditData(ref Employee employee)
             {
                 Console.WriteLine("Enter the first name of the employee");

@@ -34,7 +34,10 @@ namespace Payroll.Classes
             this.onPayroll = onPayroll;
         }
 
- 
+        /// <summary>
+        /// returns the total pay of the employee
+        /// </summary>
+        /// <returns></returns>
         public float Pay()
         {
             return wage *hoursWorked;
